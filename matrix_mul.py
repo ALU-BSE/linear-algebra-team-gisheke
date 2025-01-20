@@ -1,17 +1,21 @@
-#import pandas as pd
-#import numpy as np
-
-# Load data
-#data = pd.read_csv('path/to/data')
 
 # Example arrays
-#Prices = [[300, 500], 2x2
+Prices = [[300, 500], 
           [1000, 120.85]]
 
-#Array2 = [[200], [100]] 2x1 
-
-# Calculate the result
+# method 1 (turning Array2 into a 2*1 array to be multiplied to the prices matrix)
 Ans = []
+Array2 = [[200], [100]]
+for i in range(len(Prices)):
+    row_sum = 0
+    for j in range(len(Prices[i])):    
+        row_sum += Prices[i][j] * Array2[j][0]
+    Ans.append(row_sum) 
+print(Ans)
+
+
+# method2
+
 # (300*200 + 500*100) as an example calculation
 
 # This is a way to return a vector from multi-dimensional array multiplication 
@@ -19,7 +23,7 @@ Ans = []
 # If the Array2 is a simple array , it will be treated as a simple vector 
 
 var = [200,100]
-new_arr = []
+Ans2 = []
 # We start looping from the start of the price indices and initialise a row_sum variable which will reset to 0 every iteration
 for i in range(len(Prices)):
     row_sum = 0
@@ -28,5 +32,5 @@ for i in range(len(Prices)):
         # So we multiply the prices row by the array2 column , since j only changes and i changes after j's iteration is done        
         row_sum += Prices[i][j] * var[j] 
         # We append the sum to the list as a normal result 
-    new_arr.append(row_sum) 
-print(new_arr)
+    Ans2.append(row_sum) 
+print(Ans2)
